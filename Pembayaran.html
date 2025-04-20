@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website Pembelian Sederhana</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f8f8f8;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    input, button {
+      padding: 10px;
+      margin-top: 10px;
+      width: 100%;
+    }
+    #thanksPage {
+      display: none;
+      text-align: center;
+      padding-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Halaman Index -->
+  <div class="card" id="mainPage">
+    <h2>Produk: Gamis Muslimah</h2>
+    <img src="https://via.placeholder.com/400x500.png?text=Gamis+Muslimah" alt="Gamis">
+    <p>Harga: Rp150.000</p>
+    
+    <h3>Langkah Pembayaran:</h3>
+    <ol>
+      <li>Scan QR code berikut:</li>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Transfer+Rp150.000+ke+DANA+081234567890" alt="QR Code">
+      <li>Transfer ke: <strong>DANA 0812-3456-7890</strong></li>
+      <li>Upload bukti transfer di bawah ini:</li>
+    </ol>
+
+    <form onsubmit="showThanks(); return false;">
+      <label>Nama Pengirim:</label><br>
+      <input type="text" name="nama" required><br>
+      <label>Upload Bukti (simulasi):</label><br>
+      <input type="file" disabled><br>
+      <button type="submit">Kirim Bukti</button>
+    </form>
+  </div>
+
+  <!-- Halaman Terima Kasih -->
+  <div id="thanksPage">
+    <h1>✅ Terima kasih!</h1>
+    <p>Pembayaran Anda telah diterima secara simulasi.</p>
+    <button onclick="goBack()">⬅️ Kembali ke Halaman Utama</button>
+  </div>
+
+  <script>
+    function showThanks() {
+      document.getElementById("mainPage").style.display = "none";
+      document.getElementById("thanksPage").style.display = "block";
+    }
+    function goBack() {
+      document.getElementById("thanksPage").style.display = "none";
+      document.getElementById("mainPage").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
